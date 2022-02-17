@@ -17,6 +17,10 @@ gem 'devise'
 
 group :development, :test do
   gem 'pry'
+  gem "rspec-rails", '~> 4.0.2'
+  gem 'shoulda-matchers'
+  gem 'faker'
+  gem 'factory_bot_rails'
 end
 
 group :development do
