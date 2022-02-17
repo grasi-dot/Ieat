@@ -1,27 +1,20 @@
-class ProductsController < ApplicationController
-  def index
-    @products = Product.all
-  end
+<%= form_with(model: product, local: true) do |form| %>
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
 
-  def new
-    @product = Product.new
-  end
+  <div class="field">
+    <%= form.label :value %>
+    <%= form.text_field :value %>
+  </div>
 
-  def create
-    @product = Product.new(product_params)
+  <div class="field">
+    <%= form.label :restaurant %>
+    <%= form.collection_select :restaurant_id, Restaurant.order(:name), :id, :name, include_blank: true %>
+  </div>
 
-    respond_to do |format|
-      if @product.save
-        format.html { render :index, notice: 'Product created.' }
-      else
-        format.html { render :new }
-      end
-    end
-  end
-
-  private
-
-  def product_params
-    params.require(:product).permit(:name, :value, :restaurant_id)
-  end
-end
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
