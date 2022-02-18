@@ -3,23 +3,8 @@
 
 <% if user_signed_in? %>
   <% if current_user.restaurant? %>
-    <p> Seus produtos, <%= current_user.restaurant.name %></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Value</th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <% current_user.restaurant.products.each do |product| %>
-          <tr>
-            <td> <%=  product.name %> </td>
-            <td> <%=  product.value %> </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+    <%= render 'restaurant'%>
+  <% elsif current_user.customer? %>
+    <%= render 'customer' %>
   <% end %>
 <% end %>
